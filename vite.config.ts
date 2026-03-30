@@ -47,7 +47,7 @@ function copyDirectory(src: string, dest: string) {
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react(), copyMarkdownPlugin()],
-  base: '/Frontend-Master-Prep-Series/', // GitHub Pages subdirectory
+  base: process.env.GITHUB_ACTIONS === 'true' ? '/Frontend-Master-Prep-Series/' : '/', // Support both Netlify (root) and GitHub Pages (subdirectory)
   build: {
     outDir: 'dist',
     assetsDir: 'assets',
